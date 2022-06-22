@@ -3,18 +3,25 @@ import './Card.css';
 import { BsFillCartPlusFill } from 'react-icons/bs';
 
 const Card = (props) => {
-    const { img, name, price, action, capacity, bullet } = props.gun;
+    const { handleAddToCart, gun } = props;
+    const { img, name, price, action, capacity, bullet } = gun;
+
+
     return (
         <div className='card'>
             <div className='image-container'>
                 <img src={img} alt="" />
             </div>
-            <h2>{name}</h2>
-            <p>Bullet type: {bullet}</p>
-            <p>Capacity: {capacity}</p>
-            <p>Action: {action}</p>
+            <div className='gun-info'>
+                <h2>{name}</h2>
+                <p>Bullet type: {bullet}</p>
+                <p>Capacity: {capacity}</p>
+                <p>Action: {action}</p>
+            </div>
             <div className='add-to-cart'>
-                <button className='cart-btn'><BsFillCartPlusFill className='icon' /></button>
+                <button
+                    onClick={() => handleAddToCart(gun)}
+                    className='cart-btn'><BsFillCartPlusFill className='icon' /></button>
                 <h1>${price}</h1>
             </div>
         </div>
